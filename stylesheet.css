@@ -1,0 +1,41 @@
+* {
+    border: black 0.5px solid;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#calculator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    margin-top: 50px;
+    height: 350px;
+    width: 240px;
+}
+
+#display {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
+}
+
+.calcrow {
+    display: flex;
+    height: 25%;
+}
+
+.digit, .opersign {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* https://coolors.co/595f72-ffbc42-ccdbdc-5e8c61-d64933*/

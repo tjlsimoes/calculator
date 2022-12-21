@@ -27,7 +27,13 @@ const operate = function(operation, a, b) {
   if(operation == "+") return add(a, b);
   else if(operation == "-") return subtract(a, b);
   else if(operation == "*") return multiply(a, b);
-  else if(operation == "/") return divide(a, b);
+  else if(operation == "/") {
+    if (b == "0") {
+      return "Error";
+    } else {
+      return divide(a, b);
+    };
+  };
 }
 
 
@@ -49,6 +55,14 @@ calcbuttons.forEach(calcbutton => {
 
   let calcbtext = calcbutton.textContent;
 
+  if (result == "Error") {
+    result = "";
+    firstnum = "";
+    signop = "";
+    secnum = "";
+    result = "";
+  }
+
   switch (calcbtext) {
     case "C":
       firstnum = "";
@@ -60,24 +74,46 @@ calcbuttons.forEach(calcbutton => {
       break;
       
     case "=":
+
+    if (firstnum === "" || signop === "" || secnum === "") {
+      return display.textContent = "Error";
+    } else {
       result = operate(signop, firstnum, secnum);
       console.log(result);
       return display.textContent = operate(signop, firstnum, secnum);
+    }
 
       break;
 
       case "×":
-        return signop = "*";
+        if (firstnum !== "" && signop !== "" && secnum !== "") {
+          result = operate(signop, firstnum, secnum);
+          signop = "*";
+          secnum = "";
+          return display.textContent = result;
+        } else return signop = "*";
+        
         break; 
 
       case "÷":
-        return signop = "/";
+        if (firstnum !== "" && signop !== "" && secnum !== "") {
+          result = operate(signop, firstnum, secnum);
+          signop = "/";
+          secnum = "";
+          return display.textContent = result;
+        } else return signop = "/";
+
         break;
 
       case "-":
       case "+":
 
-        return signop = calcbutton.textContent; 
+        if (firstnum !== "" && signop !== "" &&secnum !== "") {
+          result = operate(signop, firstnum, secnum);
+          signop = calcbutton.textContent;
+          secnum = "";
+          return display.textContent = result;
+        } else return signop = calcbutton.textContent; 
 
         break;
 
@@ -91,6 +127,7 @@ calcbuttons.forEach(calcbutton => {
       case "2":
       case "3":
       case ".":
+      case "0":
 
         if (signop !== "" && result !== "") {
           firstnum = result;

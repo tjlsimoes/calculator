@@ -31,7 +31,7 @@ body {
     height: 25%;
 }
 
-.digit, .opersign, .clear {
+.digit, .opersign, .clear , .equal{
     width: 25%;
     display: flex;
     justify-content: center;

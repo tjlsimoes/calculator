@@ -35,14 +35,27 @@ const operate = function(operation, a, b) {
 
 // Function that populates the display when number buttons are clicked.
 
-let stored = "";
+let firstnum = "";
+let signop = "";
 const display = document.querySelector("#display");
 const digits = document.querySelectorAll(".digit");
 
 digits.forEach(digit => {
 
   digit.addEventListener("click", () => {
-    stored += digit.textContent;
-    return display.textContent = stored;
+    firstnum += digit.textContent;
+    return display.textContent = firstnum;
   });
+});
+
+// Add click listen to operators
+
+const operators = document.querySelectorAll(".opersign");
+
+operators.forEach(operator => {
+
+  operator.addEventListener("click", () => {
+    console.log(operator.textContent);
+    return signop += operator.textContent; 
+  })
 });

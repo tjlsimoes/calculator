@@ -129,7 +129,14 @@ calcbuttons.forEach(calcbutton => {
       case ".":
       case "0":
 
-        if (signop !== "" && result !== "") {
+        if (signop !== "" && firstnum !== "" && secnum !== "" && result !== "") {
+          signop = "";
+          firstnum = "";
+          secnum = "";
+          result = "";
+          firstnum += calcbutton.textContent;
+          return display.textContent = firstnum;
+        } else if (signop !== "" && result !== "") {
           firstnum = result;
           secnum = "";
           secnum += calcbutton.textContent;

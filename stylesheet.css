@@ -23,7 +23,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 76%;
+    width: 77%;
 }
 
 .calcrow {
@@ -31,7 +31,7 @@ body {
     height: 25%;
 }
 
-.digit, .opersign {
+.digit, .opersign, .clear {
     width: 25%;
     display: flex;
     justify-content: center;

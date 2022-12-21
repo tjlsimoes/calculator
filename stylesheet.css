@@ -1,7 +1,9 @@
 * {
     border: black 0.5px solid;
 }
-
+body, html {
+    margin: 0;
+}
 body {
     display: flex;
     flex-direction: column;
@@ -15,6 +17,7 @@ body {
     justify-content: center;
     align-items: stretch;
     margin-top: 50px;
+    margin-bottom: 50px;
     height: 350px;
     width: 240px;
 }

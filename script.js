@@ -22,8 +22,6 @@ const divide = function(a, b) {
 
 };
 
-// Function operate.
-
 const operate = function(operation, a, b) {
 
   if(operation == "+") return add(a, b);
@@ -33,29 +31,78 @@ const operate = function(operation, a, b) {
 }
 
 
-// Function that populates the display when number buttons are clicked.
 
 let firstnum = "";
 let signop = "";
+let secnum = "";
+let result = "";
+
 const display = document.querySelector("#display");
 const digits = document.querySelectorAll(".digit");
 
-digits.forEach(digit => {
 
-  digit.addEventListener("click", () => {
-    firstnum += digit.textContent;
-    return display.textContent = firstnum;
-  });
-});
+const calcbuttons = document.querySelectorAll(".calcbutton");
 
-// Add click listen to operators
+calcbuttons.forEach(calcbutton => {
 
-const operators = document.querySelectorAll(".opersign");
+  calcbutton.addEventListener("click", () => {
 
-operators.forEach(operator => {
+  let calcbtext = calcbutton.textContent;
 
-  operator.addEventListener("click", () => {
-    console.log(operator.textContent);
-    return signop += operator.textContent; 
+  switch (calcbtext) {
+    case "C":
+      
+      break;
+      
+    case "=":
+      result = operate(signop, firstnum, secnum);
+      console.log(result);
+      return display.textContent = operate(signop, firstnum, secnum);
+
+      break;
+
+      case "×":
+        return signop = "*";
+        break; 
+
+      case "÷":
+        return signop = "/";
+        break;
+
+      case "-":
+      case "+":
+
+        return signop = calcbutton.textContent; 
+
+        break;
+
+      case "7":
+      case "8":
+      case "9":
+      case "4":
+      case "5":
+      case "6":
+      case "1":
+      case "2":
+      case "3":
+      case ".":
+
+        if (signop !== "" && result !== "") {
+          firstnum = result;
+          secnum = "";
+          secnum += calcbutton.textContent;
+          return display.textContent = secnum;
+        } else if (signop !== "") {
+          secnum += calcbutton.textContent;
+          return display.textContent = secnum;
+        } else {
+          firstnum += calcbutton.textContent;
+          return display.textContent = firstnum;
+        }
+
+        break;
+
+  }
+
   })
-});
+})
